@@ -1,0 +1,20 @@
+{
+  "name": "fyw-node-api",
+  "version": "1.0.0",
+  "description": "API NodeJS by FOURNIER YOAN WEB",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "NODE_ENV=production nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "FYW - fournier.yoan10@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "mongoose": "^6.8.0",
+    "socket.io": "^4.5.4"
+  }
+}
