@@ -22,7 +22,7 @@ Le nom du fichier sera le nom du model avec la première lettre en majuscule.
 Exemple : ctx.models.User
 Le template du fichier est le suivant :
 ```
-models/user.js
+models/user.model.js
 const { mongoose } = require('../config/database')
 const { Schema } = mongoose
 
@@ -54,11 +54,14 @@ module.exports = {
 
 #### Routes
 Les routes sont automatiquement générées et importées dans le router dès lors que qu'un fichier est trouvé *{prefix}/{name}.action.js*.
+Exemple de route : /api/*v1*/test/hello-world
+Le *v1* ici correspond à l'API_VERSION du .env
 Le template du fichier est le suivant :
 ```
+actions/test/hello-world.action.js
 module.exports = {
 
-  name: 'Nom de la route',
+  name: 'Hello world',
 
   description: 'description',
 
@@ -66,11 +69,11 @@ module.exports = {
 
   method: 'GET', // GET / POST / PUT / DELETE
 
-  route: 'all', // path de la route
+  route: 'hello-world', // path de la route
 
   fn: (ctx) => (req, res) => {
     /* Fn exécuté */
-    return res.send('all')
+    return res.send('Hello world')
   }
 
 }
