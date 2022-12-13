@@ -38,7 +38,7 @@ module.exports = mongoose.model('User', schema)
 ```
 
 #### Helpers
-Les helpers sont a créer dans le dossier helpers avec l'extension helper.js,   ils sont automatiquement importés et injectés dans le context (ctx).  
+Les helpers sont a créer dans le dossier helpers avec l'extension helper.js, ils sont automatiquement importés et injectés dans le context (ctx).  
 Le nom du fichier sera le nom du helpers contenant ces fonctions.  
 Exemple : ctx.helpers.string.$capitalize()  
 Le template du fichier est le suivant :  
