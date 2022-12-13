@@ -8,19 +8,19 @@ Cloner le dépot
 
 ## Usage
 
-Compléter le *.env* grâce au template *cp.env*
+Compléter le *.env* grâce au template *cp.env*  
 
-Lancer en dev : **yarn dev** ou **npm run dev**
+Lancer en dev : **yarn dev** ou **npm run dev**  
 Lancer en production : **yarn start** ou **npm run start**
 
 ### Explications
 
 #### Modèles
-Les modèles sont a créer dans le dossier models avec l'extension model.js, ils sont automatiquement importés et injectés dans le context (ctx).
-Il doit comporter le Schema et exporter le model directement.
-Le nom du fichier sera le nom du model avec la première lettre en majuscule.
-Exemple : ctx.models.User
-Le template du fichier est le suivant :
+Les modèles sont a créer dans le dossier models avec l'extension model.js, ils sont automatiquement importés et injectés dans le context (ctx).  
+Il doit comporter le Schema et exporter le model directement.  
+Le nom du fichier sera le nom du model avec la première lettre en majuscule.  
+Exemple : ctx.models.User  
+Le template du fichier est le suivant :  
 ```
 models/user.model.js
 const { mongoose } = require('../config/database')
@@ -38,10 +38,10 @@ module.exports = mongoose.model('User', schema)
 ```
 
 #### Helpers
-Les helpers sont a créer dans le dossier helpers avec l'extension helper.js, ils sont automatiquement importés et injectés dans le context (ctx).
-Le nom du fichier sera le nom du helpers contenant ces fonctions.
-Exemple : ctx.helpers.string.$capitalize()
-Le template du fichier est le suivant :
+Les helpers sont a créer dans le dossier helpers avec l'extension helper.js,   ils sont automatiquement importés et injectés dans le context (ctx).  
+Le nom du fichier sera le nom du helpers contenant ces fonctions.  
+Exemple : ctx.helpers.string.$capitalize()  
+Le template du fichier est le suivant :  
 ```
 helpers/string.helper.js
 module.exports = {
@@ -53,10 +53,10 @@ module.exports = {
 
 
 #### Routes
-Les routes sont automatiquement générées et importées dans le router dès lors que qu'un fichier est trouvé *{prefix}/{name}.action.js*.
-Exemple de route : /api/*v1*/test/hello-world
-Le *v1* ici correspond à l'API_VERSION du .env
-Le template du fichier est le suivant :
+Les routes sont automatiquement générées et importées dans le router dès lors que qu'un fichier est trouvé *{prefix}/{name}.action.js*.  
+Exemple de route : /api/*v1*/test/hello-world  
+Le *v1* ici correspond à l'API_VERSION du .env  
+Le template du fichier est le suivant :  
 ```
 actions/test/hello-world.action.js
 module.exports = {
