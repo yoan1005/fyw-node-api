@@ -6,4 +6,6 @@ const app = express()
 const port = process.env.PORT
 const httpServer = createServer(app)
 
-module.exports = { app, port, httpServer }
+const $config = process.env
+
+module.exports = { app, port, httpServer, $config }

@@ -4,16 +4,20 @@ module.exports = {
 
   description: 'Create an User',
 
-  middleware: false,
+  middlewares: false,
 
-  method: 'get',
+  method: 'POST',
 
   route: 'create',
 
-  fn: (ctx) => (req, res) => {
+  fn: (ctx) =>  async (req, res) => {
     const { models: { User } } = ctx
-    console.log('User', new User)
-    return res.send('find ' + req.params.id)
+    const user = await User.create({
+      email: 'demo@demo.fr',
+      firstname: 'demo',
+      lastname: 'demo'
+    })
+    return res.send('created ' + user.id)
   }
 
 }

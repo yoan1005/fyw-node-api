@@ -4,14 +4,13 @@ module.exports = {
 
   description: 'Retrieve one user',
 
-  middleware: false,
+  middlewares: ['Auth'],
 
   method: 'GET',
 
   route: 'find/:id',
 
   fn: (ctx) => (req, res) => {
-    console.log('ctx', ctx)
     return res.send('find ' + req.params.id)
   }
 

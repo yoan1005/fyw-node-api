@@ -65,7 +65,7 @@ module.exports = {
 
   description: 'description',
 
-  middleware: false, // false ou un [] de middleware
+  middlewares: false, // false ou un [] de middleware
 
   method: 'GET', // GET / POST / PUT / DELETE
 
@@ -80,6 +80,34 @@ module.exports = {
 ```
 
 L'objet **ctx** contient les objets nécessaires et est injecté dans les routes, peut accéder notamment aux modèles, helpers, connexion DB, server SocketIO…
+
+
+#### Middlewares
+Les middlewares sont a créer dans le dossier middlewares avec l'extension middleware.js, ils sont automatiquement importés et injectés dans le context (ctx).  
+La propriété scope permet de définir de savoir si le middleware doit être appliqué sur une route ou sur l'app globalement. Le scope *app* appliquera le middleware à toute l'application à son chargement, le scope *route* permettra l'utilisation du mdlw dans une action (attribut *middlewares*).
+L'attribut *order* permet de gérer l'ordre de déclaration des middlewares. Surtout utile pour les scopes *app*.  
+Le nom du middleware (attribut *name*) sera le nom du middleware contenant sa fonction.  
+Le template du fichier est le suivant :  
+```
+middlewares/test.middleware.js
+module.exports = {
+
+  name: 'Nom du middleware',
+
+  description: '-',
+
+  scope: 'route', // 'app' ou 'route'
+
+  order: 0,
+
+  fn: (req, res, next) => {
+    console.log('req', req)
+    next()
+  }
+
+}
+```
+
 
 ## Todo
 

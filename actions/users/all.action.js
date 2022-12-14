@@ -4,7 +4,7 @@ module.exports = {
 
   description: 'Retrieve all users',
 
-  middleware: false,
+  middlewares: false,
 
   method: 'GET',
 
