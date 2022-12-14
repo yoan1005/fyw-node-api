@@ -12,7 +12,7 @@ module.exports = {
 
     const { headers: { internaltoken = false }, method } = req
 
-    if (method.toUpperCase() === 'GET') return next()
+    if (['GET', 'OPTIONS'].includes(method.toUpperCase())) return next()
 
     if (internaltoken && internaltoken.length === 40) {
       if (ctx.$config.INTERNAL_TOKEN === internaltoken) {
