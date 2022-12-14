@@ -111,7 +111,7 @@ module.exports = {
 
 ## Todo
 
-- [] Gestion des middleware
+- [x] Gestion des middleware
 - [] Gestion actions WS
 - [] Logger d'erreur à améliorer
 
