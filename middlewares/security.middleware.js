@@ -2,7 +2,7 @@ module.exports = {
 
   name: 'Security',
 
-  description: 'Check an internal token is passed in all request, the token should be an SHA1 string',
+  description: 'Check an internal token is passed in request except GET, the token should be an SHA1 string',
 
   scope: 'app',
 
@@ -10,7 +10,9 @@ module.exports = {
 
   fn: (ctx) => async (req, res, next) => {
 
-    const { headers: { internaltoken = false } } = req
+    const { headers: { internaltoken = false }, method } = req
+
+    if (method.toUpperCase() === 'GET') return next()
 
     if (internaltoken && internaltoken.length === 40) {
       if (ctx.$config.INTERNAL_TOKEN === internaltoken) {
