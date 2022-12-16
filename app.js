@@ -16,6 +16,10 @@ try {
   // add models in ctx
   Object.assign(app.ctx, { models })
 
+  const errors = require('./lib/errors')
+  // add errors server in ctx
+  Object.assign(app.ctx, { errors })
+
   const middlewares = require('./lib/middlewares')
   // add middlewares in ctx
   Object.assign(app.ctx, { middlewares })
@@ -27,9 +31,9 @@ try {
   const routes = require('./lib/routes')
 
 
+
 } catch (e) {
 
   console.error(`[✗] Error during initialisation…  [✗]`)
   throw new Error(e)
-
 }

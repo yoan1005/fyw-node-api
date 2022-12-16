@@ -113,7 +113,7 @@ module.exports = {
 
 - [x] Gestion des middleware
 - [] Gestion actions WS
-- [] Logger d'erreur à améliorer
+- [x] Logger d'erreur à améliorer
 
 ## Contributing
 

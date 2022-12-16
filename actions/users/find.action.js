@@ -11,7 +11,12 @@ module.exports = {
   route: 'find/:id',
 
   fn: (ctx) => (req, res) => {
+
+    const { errors: { UnauthorizedError } } = ctx
+    throw new UnauthorizedError
+
     return res.send('find ' + req.params.id)
+
   }
 
 }

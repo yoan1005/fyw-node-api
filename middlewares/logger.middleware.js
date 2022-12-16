@@ -4,12 +4,18 @@ module.exports = {
 
   description: 'Logger',
 
-  scope: 'route',
+  scope: 'error',
 
-  order: 0,
+  order: 9,
 
-  fn: (ctx) => (req, res, next) => {
-    next()
+  fn: (ctx) => (error, req, res, next) => {
+    console.error('\x1b[31m', '-- Error Handling - Path: ' + req.path + ' --')
+     if (error.message) {
+       console.error('\x1b[31m', `[${error.statusCode}] ${error.message}`)
+     }
+     console.error('\x1b[31m', '-- --')
+     
+     return error.handler(error, req, res, next)
   }
 
 }
