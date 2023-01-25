@@ -1,10 +1,12 @@
 # FYW-Node-API
 
-Backend NodeJS - full API.
+**Backend NodeJS - full API.**
+Ce boilerplate expose une API Http et Websocket, basé sur express et socket.IO, avec tous les principes de base d'une API (middlewares, models, router…). 
+Le starting du serveur Node se charge d'autoload tous les composants automatiquement, sans que vous ayez besoin de vous soucier de cette logique et que vous puissiez vous concentrer sur vos besoins pour votre application.
 
 ## Installation
 
-Cloner le dépot
+Forker le dépot
 
 ## Usage
 
@@ -109,10 +111,42 @@ module.exports = {
 ```
 
 
+#### Websockets
+Les actions websocket sont a créer dans le dossier websockets avec l'extension ws.js, ils sont automatiquement importés et monté au niveau du serveur WS pour être listen.
+Le fichier peut / doit contenir les attributs suivant :
+- event : Le nom de l'évenement écouté (`socket.io('event')`)
+- name : Nom global 
+- prefix : Si défini prefix de l'event, l'event sera accessible `prefix:event` (`socket.io('prefix:event')`)
+- room : Room pour cloisonner les utilisateurs (`socket.join('room')`)
+- fn : la fonction à exécuter
+
+Le template du fichier est le suivant :  
+```
+websockets/users/initialisation.ws.js
+module.exports = {
+
+  event: 'initialisation',
+
+  name: 'Initialisation of the user',
+
+  prefix: 'users',
+
+  room: false,
+
+  fn: async (ctx, socket, payload) => {
+    
+    socket.emit("users:initialisation", 'COMPLETED')
+
+  }
+
+}
+```
+
+
 ## Todo
 
 - [x] Gestion des middleware
-- [] Gestion actions WS
+- [x] Gestion actions WS
 - [x] Logger d'erreur à améliorer
 
 ## Contributing

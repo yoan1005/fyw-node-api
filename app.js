@@ -30,7 +30,7 @@ try {
 
   const routes = require('./lib/routes')
 
-
+  const websockets = require('./lib/socketio.actions')
 
 } catch (e) {
 
