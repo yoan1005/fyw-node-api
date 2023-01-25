@@ -113,8 +113,8 @@ module.exports = {
 
 
 #### Websockets
-Les actions websocket sont a créer dans le dossier websockets avec l'extension ws.js, ils sont automatiquement importés et monté au niveau du serveur WS pour être listen.
-Le fichier peut / doit contenir les attributs suivant :
+Les actions websocket sont a créer dans le dossier websockets avec l'extension ws.js, elles sont automatiquement importées et montées au niveau du serveur socketio pour être listen.
+Le fichier peut / doit contenir les attributs suivants :
 - event : Le nom de l'évenement écouté (`socket.io('event')`)
 - name : Nom global 
 - prefix : Si défini prefix de l'event, l'event sera accessible `prefix:event` (`socket.io('prefix:event')`)
