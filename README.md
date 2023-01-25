@@ -3,7 +3,8 @@
 **Backend NodeJS - full API.**
 
 Ce boilerplate expose une API Http et Websocket, basé sur express et socket.IO, avec tous les principes de base d'une API (middlewares, models, router…). 
-Le starting du serveur Node se charge d'autoload tous les composants automatiquement, sans que vous ayez besoin de vous soucier de cette logique et que vous puissiez vous concentrer sur vos besoins pour votre application.
+
+Le starting du serveur Node autoload et parse tous les fichiers automatiquement, sans que vous ayez besoin de vous soucier de cette logique et que vous puissiez vous concentrer sur vos besoins pour votre application.
 
 ## Installation
 
@@ -15,6 +16,9 @@ Compléter le *.env* grâce au template *cp.env*
 
 Lancer en dev : **yarn dev** ou **npm run dev**  
 Lancer en production : **yarn start** ou **npm run start**
+
+![App](https://i.ibb.co/sss2ZmN/Capture-d-e-cran-2023-01-25-a-19-47-15.png)
+
 
 ### Explications
 
@@ -111,10 +115,13 @@ module.exports = {
 }
 ```
 
+De base, 3 middlewares sont basiquement implémenté (et peuvent/doivent être améliorer à votre guise).
+Le middleware Auth qui récupére le token Bearer dans le header Authorization (à terminer avec votre config), un middleware de sécurité exigeant un token spécifique à l'API dans les headers et un middleware logger d'erreur.
+
 
 #### Websockets
-Les actions websocket sont a créer dans le dossier websockets avec l'extension ws.js, ils sont automatiquement importés et monté au niveau du serveur WS pour être listen.
-Le fichier peut / doit contenir les attributs suivant :
+Les actions websocket sont a créer dans le dossier websockets avec l'extension ws.js, elles sont automatiquement importées et montées au niveau du serveur socketio pour être listen.
+Le fichier peut / doit contenir les attributs suivants :
 - event : Le nom de l'évenement écouté (`socket.io('event')`)
 - name : Nom global 
 - prefix : Si défini prefix de l'event, l'event sera accessible `prefix:event` (`socket.io('prefix:event')`)
