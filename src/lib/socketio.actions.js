@@ -1,6 +1,6 @@
 (async () => {
   const fs = require('fs')
-  const files = fs.readdirSync('./websockets/')
+  const files = fs.readdirSync('./src/websockets/')
   const events = {}
   const { app } = require('../config/server')
   const { findFilesByExtension, listFolders } = require('../helpers/filesAndDirectories.helper')

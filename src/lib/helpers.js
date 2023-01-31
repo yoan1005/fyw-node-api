@@ -1,5 +1,5 @@
 const fs = require('fs')
-const files = fs.readdirSync('./helpers/')
+const files = fs.readdirSync('./src/helpers/')
 const helpers = {}
 
 for (var file of files) {
