@@ -1,5 +1,5 @@
 const fs = require('fs')
-const files = fs.readdirSync('./middlewares/')
+const files = fs.readdirSync('./src/middlewares/')
 const middlewares = {}
 const tmpMiddlewares = {}
 const { app } = require('../config/server')

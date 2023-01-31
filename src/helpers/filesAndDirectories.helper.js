@@ -7,7 +7,7 @@ module.exports = {
   findFilesByExtension: async (dir, ext) => {
       const matchedFiles = []
 
-      const files = await readdir(dir)
+      const files = await readdir(`./src/${dir}`)
 
       for (const file of files) {
           // Method 1:
@@ -20,7 +20,7 @@ module.exports = {
   },
   
   listFolders: async (dir) => {
-    return fs.readdirSync(dir)
+    return fs.readdirSync(`./src/${dir}`)
   }
 
 }
