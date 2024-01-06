@@ -12,7 +12,8 @@ module.exports = {
 
   fn: (ctx) =>  async (req, res) => {
     const { models: { User }, validator } = ctx
-    const valid = validator.validate(req.body, {
+
+    const validation = validator.validate(req.body, {
       'name': {
         required: true
       },
@@ -32,7 +33,10 @@ module.exports = {
       }
     })
 
-    console.log('valiid', valid)
+    if (validation.hasError) {
+      return res.status(400).send(validation)
+    }
+
     const user = await User.create(req.body)
     return res.send('created ' + user.id)
   }

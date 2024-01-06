@@ -40,6 +40,11 @@ try {
   Object.assign(app.ctx, {
     io: io
   });
+  var validator = require('./lib/validator');
+  // add validator server in ctx
+  Object.assign(app.ctx, {
+    validator: validator
+  });
   var routes = require('./lib/routes');
   var websockets = require('./lib/socketio.actions');
 } catch (e) {

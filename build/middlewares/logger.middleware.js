@@ -12,7 +12,14 @@ module.exports = {
         console.error('\x1b[31m', "[".concat(error.statusCode, "] ").concat(error.message));
       }
       console.error('\x1b[31m', '-- --');
-      return error.handler(error, req, res, next);
+      if (error.hasOwnProperty('handler')) {
+        return error.handler(error, req, res, next);
+      } else {
+        res.header('Content-Type', 'application/json');
+        return res.status(error.statusCode).send({
+          message: 'Server error - check server console'
+        });
+      }
     };
   }
 };

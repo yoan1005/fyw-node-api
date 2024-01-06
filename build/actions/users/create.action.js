@@ -13,21 +13,38 @@ module.exports = {
   fn: function fn(ctx) {
     return /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(req, res) {
-        var User, user;
+        var User, validator, valid, user;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              User = ctx.models.User;
-              _context.next = 3;
-              return User.create({
-                email: 'demo@demo.fr',
-                firstname: 'demo',
-                lastname: 'demo'
+              User = ctx.models.User, validator = ctx.validator;
+              console.log(req);
+              valid = validator.validate(req.body, {
+                'name': {
+                  required: true
+                },
+                'email': {
+                  required: true,
+                  isEmail: {},
+                  contains: '@gmail'
+                }
+              }, {
+                name: {
+                  required: "Le champs nom est requis"
+                },
+                email: {
+                  required: "Le champs nom est requis",
+                  isEmail: "Le champs email doit être un email",
+                  contains: "Le champs email doit contenir @gmail"
+                }
               });
-            case 3:
+              console.log(valid);
+              _context.next = 6;
+              return User.create(req.body);
+            case 6:
               user = _context.sent;
               return _context.abrupt("return", res.send('created ' + user.id));
-            case 5:
+            case 8:
             case "end":
               return _context.stop();
           }
