@@ -40,13 +40,13 @@ try {
   Object.assign(app.ctx, {
     io: io
   });
-  var validator = require('./lib/validator');
+  var Validator = require('./lib/validator');
   // add validator server in ctx
   Object.assign(app.ctx, {
-    validator: validator
+    Validator: Validator
   });
-  var routes = require('./lib/routes');
-  var websockets = require('./lib/socketio.actions');
+  require('./lib/routes');
+  require('./lib/socketio.actions');
 } catch (e) {
   console.error("[\u2717] Error during initialisation\u2026  [\u2717]");
   throw new Error(e);

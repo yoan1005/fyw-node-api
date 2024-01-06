@@ -13,13 +13,12 @@ module.exports = {
   fn: function fn(ctx) {
     return /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(req, res) {
-        var User, validator, valid, user;
+        var User, validator, validation, user;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               User = ctx.models.User, validator = ctx.validator;
-              console.log(req);
-              valid = validator.validate(req.body, {
+              validation = validator.validate(req.body, {
                 'name': {
                   required: true
                 },
@@ -38,7 +37,12 @@ module.exports = {
                   contains: "Le champs email doit contenir @gmail"
                 }
               });
-              console.log(valid);
+              if (!validation.hasError) {
+                _context.next = 4;
+                break;
+              }
+              return _context.abrupt("return", res.status(400).send(validation));
+            case 4:
               _context.next = 6;
               return User.create(req.body);
             case 6:

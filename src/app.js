@@ -28,13 +28,12 @@ try {
   // add socketIO server in ctx
   Object.assign(app.ctx, { io })
 
-  const validator = require('./lib/validator')
+  const Validator = require('./lib/validator')
   // add validator server in ctx
-  Object.assign(app.ctx, { validator })
+  Object.assign(app.ctx, { Validator })
 
-  const routes = require('./lib/routes')
-
-  const websockets = require('./lib/socketio.actions')
+  require('./lib/routes')
+  require('./lib/socketio.actions')
 
 } catch (e) {
 
