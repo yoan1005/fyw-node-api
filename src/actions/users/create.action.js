@@ -11,9 +11,9 @@ module.exports = {
   route: 'create',
 
   fn: (ctx) =>  async (req, res) => {
-    const { models: { User }, validator } = ctx
+    const { models: { User }, Validator } = ctx
 
-    const validation = validator.validate(req.body, {
+    const validation = Validator.validate(req.body, {
       'name': {
         required: true
       },

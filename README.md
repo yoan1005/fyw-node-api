@@ -150,6 +150,50 @@ module.exports = {
 }
 ```
 
+#### Validations
+Les validations des requêtes entrante sont basé sur le package Validator (https://github.com/validatorjs/validator.js)
+Pour l'utiliser il suffit d'importer le **Validator** depuis le ctx et d'appeler la fonction *validate* avec le body en 1er paramètre, les règles en second et en 3e les messages d'erreurs associés.
+
+Exemple: 
+```
+ const { models: { User }, Validator } = ctx
+
+    const validation = Validator.validate(req.body, {
+      'name': {
+        required: true
+      },
+      'email': {
+        required: true,
+        isEmail: {},
+        contains: '@gmail'
+      }
+    }, {
+      name: {
+        required: "Le champs nom est requis"
+      },
+      email: {
+        required: "Le champs nom est requis",
+        isEmail: "Le champs email doit être un email",
+        contains: "Le champs email doit contenir @gmail"
+      }
+    })
+    
+    if (validation.hasError) {
+      return res.status(400).send(validation)
+    }
+```
+La fonction *validate* retourne 
+```
+{
+    "hasError": true,
+    "errors": [],
+    "messages": [
+        "Le champs email doit être un email",
+        "Le champs email doit contenir @gmail"
+    ]
+}
+```
+
 
 ## Todo
 
