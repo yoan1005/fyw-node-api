@@ -151,8 +151,8 @@ module.exports = {
 ```
 
 #### Validations
-Les validations des requêtes entrante sont basé sur le package Validator (https://github.com/validatorjs/validator.js)
-Pour l'utiliser il suffit d'importer le **Validator** depuis le ctx et d'appeler la fonction *validate* avec le body en 1er paramètre, les règles en second et en 3e les messages d'erreurs associés.
+Les validations des requêtes entrantes sont basées sur le package Validator (https://github.com/validatorjs/validator.js)
+Pour l'utiliser il suffit d'importer le **Validator** depuis le ctx et d'appeler la fonction *validate* avec le body en 1er paramètre, les règles en 2nd et en 3ème les messages d'erreurs associés.
 
 Exemple: 
 ```
